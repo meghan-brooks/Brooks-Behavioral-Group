@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — Brooks Behavioral Group</title>
+  <meta name="description" content="Request a private consultation with Brooks Behavioral Group. In-home behavioral consulting serving Kernersville, NC and the greater Piedmont Triad." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,340..600&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap site-header__bar">
+      <a class="wordmark" href="index.html">
+        <span class="wordmark__seal" aria-hidden="true">BBG</span>
+        <span class="wordmark__text">
+          <span class="wordmark__name display">Brooks</span>
+          <span class="wordmark__sub">Behavioral Group</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="site-nav" id="primary-nav">
+        <a href="index.html#about">About</a>
+        <a href="index.html#services">Services</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+        <a class="site-nav__phone" href="tel:+13363109242">336.310.9242</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="contact-hero section--ivory">
+      <div class="wrap">
+        <p class="label" style="color: var(--gold-ink);">Get in touch</p>
+        <h1 class="contact-hero__title display" style="margin-top: 0.75rem;">Request a consultation</h1>
+        <p class="contact-hero__lede lede">Tell us about your family and the routines you'd like help with. Meghan responds personally to every inquiry — there's no obligation, and no referral required.</p>
+      </div>
+    </section>
+
+    <section class="section section--ivory" style="padding-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);">
+      <div class="wrap contact__grid">
+        <form id="consult-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <!-- TODO: replace YOUR_FORM_ID above with your real Formspree form ID -->
+          <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" autocomplete="name" required />
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" />
+            </div>
+            <div class="form-field">
+              <label for="child_age">Child's age</label>
+              <input id="child_age" name="child_age" type="text" placeholder="e.g. 4" />
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="contact_method">Preferred contact method</label>
+            <select id="contact_method" name="preferred_contact_method">
+              <option value="Phone">Phone</option>
+              <option value="Email">Email</option>
+              <option value="Text">Text</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="message">What's happening at home?</label>
+            <textarea id="message" name="message" required></textarea>
+          </div>
+
+          <button class="btn btn--ghost-dark" type="submit">Request a Consultation</button>
+
+          <p class="form-note">Every conversation is confidential. Fields marked required are needed so Meghan can follow up.</p>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+
+        <aside class="info-panel">
+          <div class="info-panel__item">
+            <p class="label info-panel__label">Phone</p>
+            <p class="info-panel__value"><a href="tel:+13363109242">336.310.9242</a></p>
+          </div>
+          <div class="info-panel__item">
+            <p class="label info-panel__label">Service Area</p>
+            <p class="info-panel__value">Serving Kernersville, NC and the greater Piedmont Triad</p>
+          </div>
+          <div class="info-panel__item">
+            <p class="label info-panel__label">Availability</p>
+            <p class="info-panel__value">By appointment, seven days a week</p>
+          </div>
+          <div class="info-panel__item">
+            <p class="label info-panel__label">Discretion</p>
+            <p class="info-panel__value">Private-pay only. No insurance authorizations, no referral required.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="site-footer__top">
+        <a class="wordmark" href="index.html">
+          <span class="wordmark__seal" aria-hidden="true">BBG</span>
+          <span class="wordmark__text">
+            <span class="wordmark__name display">Brooks</span>
+            <span class="wordmark__sub">Behavioral Group</span>
+          </span>
+        </a>
+
+        <nav class="site-footer__nav" aria-label="Footer">
+          <a href="index.html#about">About</a>
+          <a href="index.html#services">Services</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+
+        <div class="site-footer__contact">
+          <a href="tel:+13363109242">336.310.9242</a>
+          <span>Serving Kernersville, NC &amp; the Piedmont Triad</span>
+        </div>
+      </div>
+
+      <div class="site-footer__bottom">
+        <span class="site-footer__tagline">People&nbsp; |&nbsp; Practice&nbsp; |&nbsp; Progress</span>
+        <span>&copy; <span id="year">2026</span> Brooks Behavioral Group. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
