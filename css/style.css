@@ -586,6 +586,19 @@ textarea {
   opacity: 0.85;
 }
 
+/* Photo treated as a cameo/seal medallion, echoing the hero's
+   engraved-ring motif instead of a plain rectangular crop. */
+.about__photo {
+  width: 78%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold-500);
+  outline: 1px solid rgba(176, 141, 87, 0.45);
+  outline-offset: 10px;
+}
+
 .about__credential {
   margin-top: 0.6rem;
   color: var(--gold-ink);
