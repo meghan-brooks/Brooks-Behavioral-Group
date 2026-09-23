@@ -504,10 +504,11 @@ textarea {
 }
 
 .hero__lede {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-style: italic;
+  font-weight: 300;
   font-size: var(--step-lead);
-  line-height: 1.5;
+  line-height: 1.55;
   max-width: 34rem;
   color: var(--cream-text-dim);
   opacity: 0;
@@ -612,10 +613,11 @@ textarea {
 }
 
 .about__dek {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-style: italic;
+  font-weight: 400;
   font-size: var(--step-lead);
-  line-height: 1.5;
+  line-height: 1.6;
   max-width: var(--measure);
   color: var(--ink-900);
   margin-top: 1.5rem;
@@ -748,9 +750,10 @@ textarea {
 
 .menu__item-desc {
   margin-top: 0.4rem;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-style: italic;
-  font-size: 0.97rem;
+  font-size: 0.94rem;
+  line-height: 1.5;
   color: var(--cream-text-dim);
   max-width: 34ch;
 }
@@ -921,10 +924,10 @@ textarea {
 }
 
 .contact-hero__lede {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-style: italic;
   font-size: var(--step-lead);
-  line-height: 1.5;
+  line-height: 1.6;
   margin-top: 1.5rem;
   max-width: 34rem;
   color: var(--ink-700);
