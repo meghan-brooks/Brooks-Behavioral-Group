@@ -1,35 +1,37 @@
 /* ============================================================
    Brooks Behavioral Group — design tokens
-   Deep emerald + antique gold, on ivory. A private-office palette,
-   not a clinic or a SaaS product.
+   A near-black emerald and brushed gold, set in a high-contrast
+   Didone — the register of a couture house, not a clinic or a
+   SaaS product. Bodoni Moda carries the voice; Jost stays quiet.
    ============================================================ */
 
 :root {
   /* Color */
-  --emerald-900: #0a2620;
-  --emerald-800: #123529;
-  --emerald-700: #1c4735;
-  --emerald-600: #2a5c46;
-  --gold-500: #b08d57;
-  --gold-400: #c6a06a;
-  --gold-300: #d9bd8b;
-  --gold-ink: #7c5e33; /* AA-safe gold-on-ivory text (~5.4:1) */
-  --ivory-100: #f6f2e9;
-  --ivory-50: #fbf9f4;
-  --ink-900: #16211b;
-  --ink-700: #3a453d;
-  --cream-text: #efe9db;
-  --cream-text-dim: #cfc6b3;
+  --noir: #071a15;
+  --emerald-900: #0c2a21;
+  --emerald-800: #123c2e;
+  --emerald-700: #1d5340;
+  --emerald-600: #2c6b53;
+  --gold-600: #7e5f2e; /* AA-safe gold-on-ivory text (~5.3:1) */
+  --gold-500: #c9a24e;
+  --gold-400: #ddba71;
+  --gold-100: #f1e2ba;
+  --ivory-100: #f7f2e6;
+  --ivory-50: #fbf8f1;
+  --ink-900: #14201a;
+  --ink-700: #3d4a41;
+  --cream-text: #f1ead9;
+  --cream-text-dim: #cabfa2;
 
   /* Type */
-  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
-  --font-body: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-display: "Bodoni Moda", "Didot", "Bodoni MT", Georgia, serif;
+  --font-body: "Jost", "Century Gothic", "Futura", sans-serif;
 
   /* Scale */
-  --step-h1: clamp(2.75rem, 2rem + 3.2vw, 5rem);
-  --step-h2: clamp(2rem, 1.6rem + 1.8vw, 3.1rem);
-  --step-h3: 1.3rem;
-  --step-lead: clamp(1.1rem, 1rem + 0.4vw, 1.3rem);
+  --step-h1: clamp(3.2rem, 2.1rem + 4.6vw, 6.75rem);
+  --step-h2: clamp(2.25rem, 1.7rem + 2.4vw, 3.6rem);
+  --step-h3: 1.4rem;
+  --step-lead: clamp(1.15rem, 1.05rem + 0.4vw, 1.35rem);
   --step-body: 1.0625rem;
   --step-small: 0.875rem;
   --step-label: 0.75rem;
@@ -38,9 +40,45 @@
   --content-max: 72rem;
   --measure: 62ch;
   --space-section: clamp(4.5rem, 4rem + 3vw, 7.5rem);
-  --radius: 2px;
+  --radius: 1px;
 
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Native cross-document transitions — Home <-> Contact cross-fades
+   instead of hard-cutting. No-op (progressive enhancement) in
+   browsers that don't yet support it. */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root) {
+  animation: veil-out 0.5s var(--ease) forwards;
+}
+
+::view-transition-new(root) {
+  animation: veil-in 0.55s var(--ease) 0.08s backwards;
+}
+
+@keyframes veil-out {
+  to {
+    opacity: 0;
+    transform: scale(0.992);
+  }
+}
+
+@keyframes veil-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+  }
 }
 
 /* ---------------- Reset ---------------- */
@@ -125,8 +163,16 @@ textarea {
 
 .display {
   font-family: var(--font-display);
-  font-weight: 440;
+  font-weight: 400;
   letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+.display-italic {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
 }
 
 .label {
@@ -176,12 +222,12 @@ textarea {
 
 .hairline {
   border: 0;
-  border-top: 1px solid rgba(176, 141, 87, 0.35);
+  border-top: 1px solid rgba(201, 162, 78, 0.35);
   margin: 0;
 }
 
 .hairline--dark {
-  border-top-color: rgba(176, 141, 87, 0.28);
+  border-top-color: rgba(201, 162, 78, 0.28);
 }
 
 /* Fine brass-inlay divider with a small diamond mark, used once
@@ -231,7 +277,7 @@ textarea {
 .btn--gold {
   background: transparent;
   border-color: var(--gold-400);
-  color: var(--gold-300);
+  color: var(--gold-400);
 }
 
 .btn--gold:hover {
@@ -265,9 +311,10 @@ textarea {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(10, 38, 32, 0.92);
+  background: rgba(7, 26, 21, 0.92);
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(176, 141, 87, 0.25);
+  border-bottom: 1px solid rgba(201, 162, 78, 0.25);
+  view-transition-name: site-header;
 }
 
 .site-header__bar {
@@ -296,9 +343,10 @@ textarea {
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
-  font-size: 0.6rem;
-  letter-spacing: 0.05em;
-  color: var(--gold-300);
+  font-weight: 600;
+  font-size: 0.62rem;
+  letter-spacing: 0.04em;
+  color: var(--gold-400);
 }
 
 .wordmark__text {
@@ -317,7 +365,7 @@ textarea {
   font-size: 0.62rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--gold-300);
+  color: var(--gold-400);
 }
 
 .site-nav {
@@ -356,7 +404,7 @@ textarea {
 }
 
 .site-nav__phone {
-  color: var(--gold-300) !important;
+  color: var(--gold-400) !important;
 }
 
 .nav-toggle {
@@ -387,7 +435,7 @@ textarea {
     gap: 1.1rem;
     background: var(--emerald-900);
     padding: 1.5rem clamp(1.5rem, 1rem + 2vw, 3rem) 2rem;
-    border-bottom: 1px solid rgba(176, 141, 87, 0.25);
+    border-bottom: 1px solid rgba(201, 162, 78, 0.25);
     transform: translateY(-8px);
     opacity: 0;
     visibility: hidden;
@@ -410,13 +458,13 @@ textarea {
   position: relative;
   overflow: hidden;
   background: radial-gradient(
-      120% 140% at 82% 18%,
+      120% 140% at 82% 12%,
       var(--emerald-700) 0%,
-      var(--emerald-900) 58%
+      var(--noir) 62%
     ),
-    var(--emerald-900);
+    var(--noir);
   color: var(--cream-text);
-  padding-block: clamp(4.5rem, 3.5rem + 5vw, 8rem) clamp(4rem, 3rem + 4vw, 6.5rem);
+  padding-block: clamp(5rem, 3.8rem + 6vw, 9.5rem) clamp(4rem, 3rem + 4vw, 6.5rem);
 }
 
 .hero__seal {
@@ -463,65 +511,68 @@ textarea {
 
 .hero__frame {
   position: relative;
-  max-width: 40rem;
-  padding: clamp(2rem, 1.6rem + 2vw, 3rem);
-}
-
-.hero__frame::before,
-.hero__frame::after,
-.hero__frame > .corner-tl,
-.hero__frame > .corner-br {
-  content: "";
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  border-color: var(--gold-500);
-  opacity: 0.7;
-}
-
-.hero__frame::before {
-  top: 0;
-  left: 0;
-  border-top: 1px solid;
-  border-left: 1px solid;
-}
-
-.hero__frame::after {
-  bottom: 0;
-  right: 0;
-  border-bottom: 1px solid;
-  border-right: 1px solid;
+  max-width: 46rem;
 }
 
 .hero__eyebrow {
-  color: var(--gold-300);
-  margin-bottom: 1.5rem;
+  color: var(--gold-400);
+  margin-bottom: 1.75rem;
   opacity: 0;
   animation: rise-in 0.8s var(--ease) 0.15s forwards;
 }
 
 .hero__title {
   font-size: var(--step-h1);
-  line-height: 1.06;
+  line-height: 0.98;
+  letter-spacing: -0.015em;
   opacity: 0;
-  animation: rise-in 0.8s var(--ease) 0.3s forwards;
+  animation: rise-in 0.9s var(--ease) 0.3s forwards;
+}
+
+.hero__rule {
+  width: 0;
+  height: 1px;
+  margin-block: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
+  background: linear-gradient(
+    90deg,
+    var(--gold-500) 0%,
+    rgba(201, 162, 78, 0.15) 100%
+  );
+  animation: draw-rule 1.1s var(--ease) 0.75s forwards;
+}
+
+@keyframes draw-rule {
+  to {
+    width: clamp(6rem, 5rem + 4vw, 10rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__rule {
+    animation: none;
+    width: clamp(6rem, 5rem + 4vw, 10rem);
+  }
 }
 
 .hero__lede {
-  margin-top: 1.75rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-lead);
+  line-height: 1.5;
+  max-width: 34rem;
   color: var(--cream-text-dim);
   opacity: 0;
-  animation: rise-in 0.8s var(--ease) 0.45s forwards;
+  animation: rise-in 0.8s var(--ease) 0.6s forwards;
 }
 
 .hero__actions {
-  margin-top: 2.5rem;
+  margin-top: 2.75rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 1.75rem;
   opacity: 0;
-  animation: rise-in 0.8s var(--ease) 0.6s forwards;
+  animation: rise-in 0.8s var(--ease) 0.75s forwards;
 }
 
 .hero__call {
@@ -576,13 +627,13 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--gold-300);
+  color: var(--gold-400);
   text-align: center;
   padding: 1.5rem;
 }
 
 .about__portrait-inner .label {
-  color: var(--gold-300);
+  color: var(--gold-400);
   opacity: 0.85;
 }
 
@@ -595,21 +646,32 @@ textarea {
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--gold-500);
-  outline: 1px solid rgba(176, 141, 87, 0.45);
+  outline: 1px solid rgba(201, 162, 78, 0.45);
   outline-offset: 10px;
 }
 
 .about__credential {
   margin-top: 0.6rem;
-  color: var(--gold-ink);
+  color: var(--gold-600);
 }
 
 .about__name {
-  font-size: var(--step-h2);
+  font-size: clamp(2.5rem, 2rem + 2.4vw, 4rem);
+  letter-spacing: -0.01em;
+}
+
+.about__dek {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-lead);
+  line-height: 1.5;
+  max-width: var(--measure);
+  color: var(--ink-900);
+  margin-top: 1.5rem;
 }
 
 .about__bio {
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   display: flex;
   flex-direction: column;
   gap: 1.1rem;
@@ -629,9 +691,9 @@ textarea {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--gold-ink);
+  color: var(--gold-600);
   padding-bottom: 0.6rem;
-  border-bottom: 1px solid rgba(176, 141, 87, 0.35);
+  border-bottom: 1px solid rgba(201, 162, 78, 0.35);
   margin-bottom: 0.75rem;
 }
 
@@ -680,26 +742,28 @@ textarea {
 
 .menu__group-title {
   font-family: var(--font-display);
-  font-size: 1.35rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(176, 141, 87, 0.35);
+  font-size: clamp(1.5rem, 1.3rem + 0.8vw, 1.9rem);
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid rgba(201, 162, 78, 0.35);
   margin-bottom: 0.25rem;
 }
 
 .menu__item {
-  padding-block: 1.15rem;
-  border-bottom: 1px solid rgba(176, 141, 87, 0.16);
+  padding-block: 1.25rem;
+  border-bottom: 1px solid rgba(201, 162, 78, 0.16);
 }
 
 .menu__item-name {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1.2rem;
   color: var(--cream-text);
 }
 
 .menu__item-desc {
-  margin-top: 0.35rem;
-  font-size: 0.92rem;
+  margin-top: 0.4rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 0.97rem;
   color: var(--cream-text-dim);
   max-width: 34ch;
 }
@@ -713,7 +777,7 @@ textarea {
 .pay-note {
   margin-top: clamp(3rem, 2.5rem + 2vw, 4.5rem);
   padding: clamp(1.75rem, 1.5rem + 1vw, 2.5rem);
-  border: 1px solid rgba(176, 141, 87, 0.4);
+  border: 1px solid rgba(201, 162, 78, 0.4);
   display: grid;
   grid-template-columns: minmax(10rem, 14rem) 1fr;
   gap: 1.5rem 2.5rem;
@@ -721,8 +785,9 @@ textarea {
 
 .pay-note__title {
   font-family: var(--font-display);
-  font-size: 1.3rem;
-  color: var(--gold-300);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--gold-400);
 }
 
 .pay-note p {
@@ -748,8 +813,9 @@ textarea {
 }
 
 .cta-band__title {
-  font-size: var(--step-h3);
-  max-width: 34rem;
+  font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+  font-style: italic;
+  max-width: 30rem;
 }
 
 /* ============================================================
@@ -784,7 +850,7 @@ textarea {
 }
 
 .site-footer__nav a:hover {
-  color: var(--gold-300);
+  color: var(--gold-400);
 }
 
 .site-footer__contact {
@@ -797,7 +863,7 @@ textarea {
 
 .site-footer__contact a {
   text-decoration: none;
-  color: var(--gold-300);
+  color: var(--gold-400);
 }
 
 @media (max-width: 600px) {
@@ -808,7 +874,7 @@ textarea {
 
 .site-footer__bottom {
   padding-top: 1.75rem;
-  border-top: 1px solid rgba(176, 141, 87, 0.22);
+  border-top: 1px solid rgba(201, 162, 78, 0.22);
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -830,12 +896,18 @@ textarea {
 }
 
 .contact-hero__title {
-  font-size: var(--step-h1);
-  max-width: 34rem;
+  font-size: clamp(2.75rem, 2.1rem + 3vw, 4.5rem);
+  line-height: 1.02;
+  max-width: 30rem;
 }
 
 .contact-hero__lede {
-  margin-top: 1.25rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-lead);
+  line-height: 1.5;
+  margin-top: 1.5rem;
+  max-width: 34rem;
   color: var(--ink-700);
 }
 
@@ -915,7 +987,7 @@ textarea {
 
 .info-panel__item {
   padding-block: 1.1rem;
-  border-bottom: 1px solid rgba(176, 141, 87, 0.25);
+  border-bottom: 1px solid rgba(201, 162, 78, 0.25);
 }
 
 .info-panel__item:first-of-type {
@@ -941,7 +1013,7 @@ textarea {
 }
 
 .info-panel__value a:hover {
-  color: var(--gold-300);
+  color: var(--gold-400);
 }
 
 .form-status {
