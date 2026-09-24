@@ -168,13 +168,6 @@ textarea {
   text-wrap: balance;
 }
 
-.display-italic {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
 .label {
   font-family: var(--font-body);
   font-size: var(--step-label);
@@ -705,7 +698,10 @@ textarea {
   left: clamp(1.5rem, 1rem + 2vw, 3rem);
   bottom: clamp(1.5rem, 1.25rem + 1.5vw, 2.75rem);
   max-width: 26rem;
-  font-size: clamp(1.5rem, 1.2rem + 1.4vw, 2.25rem);
+  font-family: var(--font-body);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(1.3rem, 1.1rem + 1.1vw, 1.9rem);
   color: var(--cream-text);
 }
 
@@ -804,9 +800,10 @@ textarea {
 }
 
 .pay-note__title {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   font-style: italic;
-  font-size: 1.5rem;
+  font-weight: 500;
+  font-size: 1.3rem;
   color: var(--gold-400);
 }
 
@@ -833,8 +830,11 @@ textarea {
 }
 
 .cta-band__title {
-  font-size: clamp(1.6rem, 1.3rem + 1.2vw, 2.2rem);
+  font-family: var(--font-body);
+  font-size: clamp(1.35rem, 1.15rem + 1vw, 1.85rem);
   font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.005em;
   max-width: 30rem;
 }
 
