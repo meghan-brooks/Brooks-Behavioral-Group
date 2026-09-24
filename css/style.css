@@ -730,6 +730,12 @@ textarea {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+  align-items: stretch;
+}
+
+.service-group {
+  border: 1px solid rgba(201, 162, 78, 0.4);
+  padding: clamp(1.5rem, 1.25rem + 1vw, 2rem) clamp(1.25rem, 1rem + 0.75vw, 1.5rem);
 }
 
 @media (max-width: 1024px) {
