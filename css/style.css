@@ -750,6 +750,7 @@ textarea {
   padding-bottom: 1.1rem;
   border-bottom: 1px solid rgba(201, 162, 78, 0.35);
   margin-bottom: 0.25rem;
+  overflow-wrap: break-word;
 }
 
 .menu__item {
