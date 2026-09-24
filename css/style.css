@@ -702,7 +702,7 @@ textarea {
   font-style: italic;
   font-weight: 400;
   font-size: clamp(1.3rem, 1.1rem + 1.1vw, 1.9rem);
-  color: var(--cream-text);
+  color: var(--gold-400);
 }
 
 /* ============================================================
