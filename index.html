@@ -143,12 +143,21 @@
             </div>
           </div>
 
-          <aside class="service-preview" aria-live="polite">
-            <div class="service-preview__media">
-              <img class="service-preview__img" src="assets/images/bedtime.jpg" alt="A cozy, softly lit bedroom in the evening" />
+          <aside class="service-stage" aria-live="polite">
+            <div class="service-stage__frame">
+              <img class="service-stage__img" src="assets/images/bedtime.jpg" alt="A cozy, softly lit bedroom in the evening" />
+              <button type="button" class="service-stage__arrow service-stage__arrow--prev" aria-label="Previous service">
+                <span aria-hidden="true">&#8249;</span>
+              </button>
+              <button type="button" class="service-stage__arrow service-stage__arrow--next" aria-label="Next service">
+                <span aria-hidden="true">&#8250;</span>
+              </button>
             </div>
-            <p class="service-preview__name display">Bedtime routines</p>
-            <p class="service-preview__desc">Calmer nights, consistent wind-downs, and an end to the nightly negotiation.</p>
+            <div class="service-stage__foot">
+              <p class="service-stage__count">01 / 11</p>
+              <p class="service-stage__name display">Bedtime routines</p>
+              <p class="service-stage__desc">Calmer nights, consistent wind-downs, and an end to the nightly negotiation.</p>
+            </div>
           </aside>
         </div>
 

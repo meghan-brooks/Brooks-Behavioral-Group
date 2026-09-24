@@ -27,36 +27,121 @@
     });
   }
 
-  const serviceItems = document.querySelectorAll(".menu__item[data-img]");
-  const previewImg = document.querySelector(".service-preview__img");
-  const previewName = document.querySelector(".service-preview__name");
-  const previewDesc = document.querySelector(".service-preview__desc");
+  const serviceItems = Array.from(document.querySelectorAll(".menu__item[data-img]"));
+  const stageImg = document.querySelector(".service-stage__img");
+  const stageFrame = document.querySelector(".service-stage__frame");
+  const stageFoot = document.querySelector(".service-stage__foot");
+  const stageName = document.querySelector(".service-stage__name");
+  const stageDesc = document.querySelector(".service-stage__desc");
+  const stageCount = document.querySelector(".service-stage__count");
+  const prevBtn = document.querySelector(".service-stage__arrow--prev");
+  const nextBtn = document.querySelector(".service-stage__arrow--next");
+  const explorer = document.querySelector(".service-explorer");
 
-  if (serviceItems.length && previewImg && previewName && previewDesc) {
-    const showService = (item) => {
+  if (serviceItems.length && stageImg && stageFoot && stageName && stageDesc) {
+    const total = serviceItems.length;
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let activeIndex = Math.max(serviceItems.findIndex((el) => el.classList.contains("is-active")), 0);
+    let pendingTimeout = null;
+
+    const renderCount = (index) => {
+      if (!stageCount) return;
+      const n = String(index + 1).padStart(2, "0");
+      const t = String(total).padStart(2, "0");
+      stageCount.textContent = `${n} / ${t}`;
+    };
+
+    const showService = (item, direction) => {
       serviceItems.forEach((el) => el.classList.remove("is-active"));
       item.classList.add("is-active");
 
+      const index = serviceItems.indexOf(item);
       const { img, alt, desc } = item.dataset;
       const name = item.textContent.trim();
+      activeIndex = index;
 
-      if (previewImg.getAttribute("src") === img) return;
+      if (stageImg.getAttribute("src") === img) {
+        renderCount(index);
+        return;
+      }
 
-      previewImg.classList.add("is-swapping");
-      window.setTimeout(() => {
-        previewImg.src = img;
-        previewImg.alt = alt || "";
-        previewName.textContent = name;
-        previewDesc.textContent = desc || "";
-        previewImg.classList.remove("is-swapping");
-      }, 150);
+      if (pendingTimeout) window.clearTimeout(pendingTimeout);
+
+      if (prefersReducedMotion) {
+        stageImg.src = img;
+        stageImg.alt = alt || "";
+        stageName.textContent = name;
+        stageDesc.textContent = desc || "";
+        renderCount(index);
+        return;
+      }
+
+      stageImg.dataset.state = direction === "prev" ? "leaving-prev" : "leaving-next";
+      stageFoot.classList.add("is-updating");
+
+      pendingTimeout = window.setTimeout(() => {
+        stageImg.src = img;
+        stageImg.alt = alt || "";
+        stageName.textContent = name;
+        stageDesc.textContent = desc || "";
+        renderCount(index);
+
+        stageImg.dataset.state = direction === "prev" ? "entering-prev" : "entering-next";
+        void stageImg.offsetWidth;
+        requestAnimationFrame(() => {
+          stageImg.dataset.state = "";
+          stageFoot.classList.remove("is-updating");
+        });
+      }, 380);
     };
 
-    serviceItems.forEach((item) => {
-      item.addEventListener("mouseenter", () => showService(item));
-      item.addEventListener("focus", () => showService(item));
-      item.addEventListener("click", () => showService(item));
+    const goTo = (rawIndex) => {
+      const nextIndex = ((rawIndex % total) + total) % total;
+      if (nextIndex === activeIndex) return;
+      const direction = nextIndex === (activeIndex + 1) % total ? "next" : "prev";
+      showService(serviceItems[nextIndex], direction);
+    };
+
+    serviceItems.forEach((item, index) => {
+      const enter = () => {
+        const direction = index >= activeIndex ? "next" : "prev";
+        showService(item, direction);
+      };
+      item.addEventListener("mouseenter", enter);
+      item.addEventListener("focus", enter);
+      item.addEventListener("click", enter);
     });
+
+    if (prevBtn) prevBtn.addEventListener("click", () => goTo(activeIndex - 1));
+    if (nextBtn) nextBtn.addEventListener("click", () => goTo(activeIndex + 1));
+
+    if (explorer && stageFrame) {
+      explorer.addEventListener("keydown", (event) => {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        if (!stageFrame.contains(event.target)) return;
+        event.preventDefault();
+        goTo(activeIndex + (event.key === "ArrowRight" ? 1 : -1));
+      });
+
+      let touchStartX = null;
+      stageFrame.addEventListener(
+        "touchstart",
+        (event) => {
+          touchStartX = event.touches[0].clientX;
+        },
+        { passive: true }
+      );
+      stageFrame.addEventListener("touchend", (event) => {
+        if (touchStartX === null) return;
+        const delta = event.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(delta) > 40) {
+          goTo(activeIndex + (delta < 0 ? 1 : -1));
+        }
+        touchStartX = null;
+      });
+    }
+
+    renderCount(activeIndex);
   }
 
   const form = document.getElementById("consult-form");
