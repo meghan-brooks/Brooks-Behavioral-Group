@@ -27,6 +27,38 @@
     });
   }
 
+  const serviceItems = document.querySelectorAll(".menu__item[data-img]");
+  const previewImg = document.querySelector(".service-preview__img");
+  const previewName = document.querySelector(".service-preview__name");
+  const previewDesc = document.querySelector(".service-preview__desc");
+
+  if (serviceItems.length && previewImg && previewName && previewDesc) {
+    const showService = (item) => {
+      serviceItems.forEach((el) => el.classList.remove("is-active"));
+      item.classList.add("is-active");
+
+      const { img, alt, desc } = item.dataset;
+      const name = item.textContent.trim();
+
+      if (previewImg.getAttribute("src") === img) return;
+
+      previewImg.classList.add("is-swapping");
+      window.setTimeout(() => {
+        previewImg.src = img;
+        previewImg.alt = alt || "";
+        previewName.textContent = name;
+        previewDesc.textContent = desc || "";
+        previewImg.classList.remove("is-swapping");
+      }, 150);
+    };
+
+    serviceItems.forEach((item) => {
+      item.addEventListener("mouseenter", () => showService(item));
+      item.addEventListener("focus", () => showService(item));
+      item.addEventListener("click", () => showService(item));
+    });
+  }
+
   const form = document.getElementById("consult-form");
   const status = document.getElementById("form-status");
 
