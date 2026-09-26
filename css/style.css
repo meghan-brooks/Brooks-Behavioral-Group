@@ -418,24 +418,10 @@ textarea {
 
 .hero {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
   background: var(--noir);
   color: var(--cream-text);
-}
-
-.hero__panel {
-  position: relative;
-  display: flex;
-  align-items: center;
-  padding-block: clamp(4rem, 3rem + 5vw, 7rem);
-  padding-inline: clamp(1.5rem, 1rem + 2vw, 3rem);
-  border-right: 1px solid rgba(201, 162, 78, 0.25);
-}
-
-.hero__media {
-  position: relative;
-  overflow: hidden;
+  padding-block: clamp(5rem, 3.8rem + 6vw, 9.5rem) clamp(4rem, 3rem + 4vw, 6.5rem);
 }
 
 .hero__bg {
@@ -444,44 +430,51 @@ textarea {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 25%;
+  object-position: 78% 22%;
 }
 
-.hero__media-scrim {
+.hero__scrim {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-      90deg,
-      rgba(7, 26, 21, 0.3) 0%,
-      rgba(7, 26, 21, 0) 14%
+      100deg,
+      rgba(7, 26, 21, 0.96) 0%,
+      rgba(7, 26, 21, 0.88) 38%,
+      rgba(7, 26, 21, 0.55) 62%,
+      rgba(7, 26, 21, 0.32) 100%
     ),
-    linear-gradient(0deg, rgba(7, 26, 21, 0.4) 0%, rgba(7, 26, 21, 0) 35%);
+    linear-gradient(
+      0deg,
+      rgba(7, 26, 21, 0.5) 0%,
+      rgba(7, 26, 21, 0) 30%
+    );
 }
 
 .hero__frame {
   position: relative;
   z-index: 1;
-  max-width: 32rem;
+  max-width: 36rem;
 }
 
-@media (max-width: 900px) {
-  .hero {
-    grid-template-columns: 1fr;
+@media (max-width: 640px) {
+  .hero__bg {
+    object-position: 92% 18%;
   }
 
-  .hero__panel {
-    border-right: none;
-    border-bottom: 1px solid rgba(201, 162, 78, 0.25);
-    order: 2;
-  }
-
-  .hero__frame {
-    max-width: none;
-  }
-
-  .hero__media {
-    order: 1;
-    aspect-ratio: 4 / 3;
+  .hero__scrim {
+    background: linear-gradient(
+        180deg,
+        rgba(7, 26, 21, 0.97) 0%,
+        rgba(7, 26, 21, 0.88) 55%,
+        rgba(7, 26, 21, 0.6) 78%,
+        rgba(7, 26, 21, 0.35) 100%
+      ),
+      linear-gradient(
+        100deg,
+        rgba(7, 26, 21, 0.55) 0%,
+        rgba(7, 26, 21, 0.15) 45%,
+        rgba(7, 26, 21, 0) 70%
+      );
   }
 }
 
@@ -493,8 +486,8 @@ textarea {
 }
 
 .hero__title {
-  font-size: var(--step-h1);
-  line-height: 0.98;
+  font-size: clamp(2.5rem, 1.9rem + 3vw, 4.6rem);
+  line-height: 1.05;
   letter-spacing: -0.015em;
   opacity: 0;
   animation: rise-in 0.9s var(--ease) 0.3s forwards;
