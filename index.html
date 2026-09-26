@@ -130,54 +130,178 @@
           <p class="lede">Brooks Behavioral Group is a private-pay consulting practice — no insurance restrictions, no long-term treatment plans. Just focused, in-home guidance until the hardest parts of your day feel manageable again.</p>
         </div>
 
-        <div class="service-explorer">
-          <div class="service-explorer__list">
-            <div class="service-group">
-              <h3 class="menu__group-title">Routines</h3>
-              <ul>
-                <li><button type="button" class="menu__item is-active" data-img="assets/images/bedtime.jpg" data-alt="A cozy, softly lit bedroom in the evening" data-desc="Calmer nights, consistent wind-downs, and an end to the nightly negotiation.">Bedtime routines</button></li>
-                <li><button type="button" class="menu__item" data-img="assets/images/morning-routine.jpg" data-alt="A backpack and water bottle ready by the door" data-desc="Smooth transitions out the door, without the daily scramble.">Morning routines &amp; school preparation</button></li>
-                <li><button type="button" class="menu__item" data-img="assets/images/toileting.jpg" data-alt="A child's step stool beside the toilet" data-desc="A clear, judgment-free plan built around your child's readiness.">Toileting &amp; potty training</button></li>
-                <li><button type="button" class="menu__item" data-img="assets/images/transitions.jpg" data-alt="A child walking past a visual routine chart" data-desc="Fewer power struggles moving from one activity to the next.">Transitions between activities</button></li>
-                <li><button type="button" class="menu__item" data-img="assets/images/community-outings.jpg" data-alt="A parent and child walking hand in hand on a shopping street" data-desc="Confidence in public spaces — stores, restaurants, appointments, travel.">Community outings</button></li>
-              </ul>
-            </div>
-
-            <div class="service-group">
-              <h3 class="menu__group-title">Indepen&shy;dence</h3>
-              <ul>
-                <li><button type="button" class="menu__item" data-img="assets/images/mealtime.jpg" data-alt="A child's divided plate set at the family table" data-desc="Practical strategies for picky eating and family meals that work.">Mealtime challenges</button></li>
-                <li><button type="button" class="menu__item" data-img="assets/images/screen-time.jpg" data-alt="A parent guiding a child to place a tablet into a 'Tablet All Done' basket beside a visual routine board" data-desc="Ending screen time without the meltdown that follows.">Screen-time transitions</button></li>
-                <li><button type="button" class="menu__item" data-img="assets/images/household-expectations.jpg" data-alt="A child putting toys away in a basket" data-desc="Rules that stick, without constant repetition or escalation.">Following household expectations</button></li>
-                <li><button type="button" class="menu__item" data-img="assets/images/independence.jpg" data-alt="A child putting on his own shoes" data-desc="Daily living skills that reduce reliance on prompting and reminders.">Building independence</button></li>
-              </ul>
-            </div>
-
-            <div class="service-group">
-              <h3 class="menu__group-title">Family Support</h3>
-              <ul>
-                <li><button type="button" class="menu__item" data-img="assets/images/parent-coaching.jpg" data-alt="Meghan showing a mother and son a visual routine card at their kitchen table" data-desc="Tools and confidence to carry strategies forward on your own.">Parent &amp; caregiver coaching</button></li>
-                <li><button type="button" class="menu__item" data-img="assets/images/household-staff.jpg" data-alt="Meghan reviewing a daily home routines checklist with two caregivers" data-desc="Nannies, grandparents, and caregivers, working from one consistent plan.">Household staff alignment &amp; training</button></li>
-              </ul>
-            </div>
+        <div class="service-groups">
+          <div class="service-group">
+            <h3 class="menu__group-title">Routines</h3>
+            <ul class="service-accordion">
+              <li class="service-item is-open">
+                <button type="button" class="menu__item" id="trigger-bedtime" aria-expanded="true" aria-controls="panel-bedtime">
+                  Bedtime routines
+                  <span class="menu__item__indicator" aria-hidden="true">&#8964;</span>
+                </button>
+                <div class="service-item__panel" id="panel-bedtime" role="region" aria-labelledby="trigger-bedtime">
+                  <div class="service-item__panel-inner">
+                    <div class="service-item__media">
+                      <img class="service-item__img" src="assets/images/bedtime.jpg" alt="A cozy, softly lit bedroom in the evening" loading="lazy" />
+                    </div>
+                    <p class="service-item__desc">Calmer nights, consistent wind-downs, and an end to the nightly negotiation.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="service-item">
+                <button type="button" class="menu__item" id="trigger-morning" aria-expanded="false" aria-controls="panel-morning">
+                  Morning routines &amp; school preparation
+                  <span class="menu__item__indicator" aria-hidden="true">&#8964;</span>
+                </button>
+                <div class="service-item__panel" id="panel-morning" role="region" aria-labelledby="trigger-morning">
+                  <div class="service-item__panel-inner">
+                    <div class="service-item__media">
+                      <img class="service-item__img" src="assets/images/morning-routine.jpg" alt="A backpack and water bottle ready by the door" loading="lazy" />
+                    </div>
+                    <p class="service-item__desc">Smooth transitions out the door, without the daily scramble.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="service-item">
+                <button type="button" class="menu__item" id="trigger-toileting" aria-expanded="false" aria-controls="panel-toileting">
+                  Toileting &amp; potty training
+                  <span class="menu__item__indicator" aria-hidden="true">&#8964;</span>
+                </button>
+                <div class="service-item__panel" id="panel-toileting" role="region" aria-labelledby="trigger-toileting">
+                  <div class="service-item__panel-inner">
+                    <div class="service-item__media">
+                      <img class="service-item__img" src="assets/images/toileting.jpg" alt="A child's step stool beside the toilet" loading="lazy" />
+                    </div>
+                    <p class="service-item__desc">A clear, judgment-free plan built around your child's readiness.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="service-item">
+                <button type="button" class="menu__item" id="trigger-transitions" aria-expanded="false" aria-controls="panel-transitions">
+                  Transitions between activities
+                  <span class="menu__item__indicator" aria-hidden="true">&#8964;</span>
+                </button>
+                <div class="service-item__panel" id="panel-transitions" role="region" aria-labelledby="trigger-transitions">
+                  <div class="service-item__panel-inner">
+                    <div class="service-item__media">
+                      <img class="service-item__img" src="assets/images/transitions.jpg" alt="A child walking past a visual routine chart" loading="lazy" />
+                    </div>
+                    <p class="service-item__desc">Fewer power struggles moving from one activity to the next.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="service-item">
+                <button type="button" class="menu__item" id="trigger-community" aria-expanded="false" aria-controls="panel-community">
+                  Community outings
+                  <span class="menu__item__indicator" aria-hidden="true">&#8964;</span>
+                </button>
+                <div class="service-item__panel" id="panel-community" role="region" aria-labelledby="trigger-community">
+                  <div class="service-item__panel-inner">
+                    <div class="service-item__media">
+                      <img class="service-item__img" src="assets/images/community-outings.jpg" alt="A parent and child walking hand in hand on a shopping street" loading="lazy" />
+                    </div>
+                    <p class="service-item__desc">Confidence in public spaces — stores, restaurants, appointments, travel.</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
 
-          <aside class="service-stage" aria-live="polite">
-            <div class="service-stage__frame">
-              <img class="service-stage__img" src="assets/images/bedtime.jpg" alt="A cozy, softly lit bedroom in the evening" />
-              <button type="button" class="service-stage__arrow service-stage__arrow--prev" aria-label="Previous service">
-                <span aria-hidden="true">&#8249;</span>
-              </button>
-              <button type="button" class="service-stage__arrow service-stage__arrow--next" aria-label="Next service">
-                <span aria-hidden="true">&#8250;</span>
-              </button>
-            </div>
-            <div class="service-stage__foot">
-              <p class="service-stage__count">01 / 11</p>
-              <p class="service-stage__name display">Bedtime routines</p>
-              <p class="service-stage__desc">Calmer nights, consistent wind-downs, and an end to the nightly negotiation.</p>
-            </div>
-          </aside>
+          <div class="service-group">
+            <h3 class="menu__group-title">Indepen&shy;dence</h3>
+            <ul class="service-accordion">
+              <li class="service-item">
+                <button type="button" class="menu__item" id="trigger-mealtime" aria-expanded="false" aria-controls="panel-mealtime">
+                  Mealtime challenges
+                  <span class="menu__item__indicator" aria-hidden="true">&#8964;</span>
+                </button>
+                <div class="service-item__panel" id="panel-mealtime" role="region" aria-labelledby="trigger-mealtime">
+                  <div class="service-item__panel-inner">
+                    <div class="service-item__media">
+                      <img class="service-item__img" src="assets/images/mealtime.jpg" alt="A child's divided plate set at the family table" loading="lazy" />
+                    </div>
+                    <p class="service-item__desc">Practical strategies for picky eating and family meals that work.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="service-item">
+                <button type="button" class="menu__item" id="trigger-screentime" aria-expanded="false" aria-controls="panel-screentime">
+                  Screen-time transitions
+                  <span class="menu__item__indicator" aria-hidden="true">&#8964;</span>
+                </button>
+                <div class="service-item__panel" id="panel-screentime" role="region" aria-labelledby="trigger-screentime">
+                  <div class="service-item__panel-inner">
+                    <div class="service-item__media">
+                      <img class="service-item__img" src="assets/images/screen-time.jpg" alt="A parent guiding a child to place a tablet into a 'Tablet All Done' basket beside a visual routine board" loading="lazy" />
+                    </div>
+                    <p class="service-item__desc">Ending screen time without the meltdown that follows.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="service-item">
+                <button type="button" class="menu__item" id="trigger-expectations" aria-expanded="false" aria-controls="panel-expectations">
+                  Following household expectations
+                  <span class="menu__item__indicator" aria-hidden="true">&#8964;</span>
+                </button>
+                <div class="service-item__panel" id="panel-expectations" role="region" aria-labelledby="trigger-expectations">
+                  <div class="service-item__panel-inner">
+                    <div class="service-item__media">
+                      <img class="service-item__img" src="assets/images/household-expectations.jpg" alt="A child putting toys away in a basket" loading="lazy" />
+                    </div>
+                    <p class="service-item__desc">Rules that stick, without constant repetition or escalation.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="service-item">
+                <button type="button" class="menu__item" id="trigger-independence" aria-expanded="false" aria-controls="panel-independence">
+                  Building independence
+                  <span class="menu__item__indicator" aria-hidden="true">&#8964;</span>
+                </button>
+                <div class="service-item__panel" id="panel-independence" role="region" aria-labelledby="trigger-independence">
+                  <div class="service-item__panel-inner">
+                    <div class="service-item__media">
+                      <img class="service-item__img" src="assets/images/independence.jpg" alt="A child putting on his own shoes" loading="lazy" />
+                    </div>
+                    <p class="service-item__desc">Daily living skills that reduce reliance on prompting and reminders.</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="service-group">
+            <h3 class="menu__group-title">Family Support</h3>
+            <ul class="service-accordion">
+              <li class="service-item">
+                <button type="button" class="menu__item" id="trigger-coaching" aria-expanded="false" aria-controls="panel-coaching">
+                  Parent &amp; caregiver coaching
+                  <span class="menu__item__indicator" aria-hidden="true">&#8964;</span>
+                </button>
+                <div class="service-item__panel" id="panel-coaching" role="region" aria-labelledby="trigger-coaching">
+                  <div class="service-item__panel-inner">
+                    <div class="service-item__media">
+                      <img class="service-item__img" src="assets/images/parent-coaching.jpg" alt="Meghan showing a mother and son a visual routine card at their kitchen table" loading="lazy" />
+                    </div>
+                    <p class="service-item__desc">Tools and confidence to carry strategies forward on your own.</p>
+                  </div>
+                </div>
+              </li>
+              <li class="service-item">
+                <button type="button" class="menu__item" id="trigger-staff" aria-expanded="false" aria-controls="panel-staff">
+                  Household staff alignment &amp; training
+                  <span class="menu__item__indicator" aria-hidden="true">&#8964;</span>
+                </button>
+                <div class="service-item__panel" id="panel-staff" role="region" aria-labelledby="trigger-staff">
+                  <div class="service-item__panel-inner">
+                    <div class="service-item__media">
+                      <img class="service-item__img" src="assets/images/household-staff.jpg" alt="Meghan reviewing a daily home routines checklist with two caregivers" loading="lazy" />
+                    </div>
+                    <p class="service-item__desc">Nannies, grandparents, and caregivers, working from one consistent plan.</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="pay-note">

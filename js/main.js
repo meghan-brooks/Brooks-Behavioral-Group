@@ -27,121 +27,36 @@
     });
   }
 
-  const serviceItems = Array.from(document.querySelectorAll(".menu__item[data-img]"));
-  const stageImg = document.querySelector(".service-stage__img");
-  const stageFrame = document.querySelector(".service-stage__frame");
-  const stageFoot = document.querySelector(".service-stage__foot");
-  const stageName = document.querySelector(".service-stage__name");
-  const stageDesc = document.querySelector(".service-stage__desc");
-  const stageCount = document.querySelector(".service-stage__count");
-  const prevBtn = document.querySelector(".service-stage__arrow--prev");
-  const nextBtn = document.querySelector(".service-stage__arrow--next");
-  const explorer = document.querySelector(".service-explorer");
+  const serviceItems = Array.from(document.querySelectorAll(".service-item"));
 
-  if (serviceItems.length && stageImg && stageFoot && stageName && stageDesc) {
-    const total = serviceItems.length;
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let activeIndex = Math.max(serviceItems.findIndex((el) => el.classList.contains("is-active")), 0);
-    let pendingTimeout = null;
+  if (serviceItems.length) {
+    const panelFor = (item) => item.querySelector(".service-item__panel");
+    const triggerFor = (item) => item.querySelector(".menu__item");
 
-    const renderCount = (index) => {
-      if (!stageCount) return;
-      const n = String(index + 1).padStart(2, "0");
-      const t = String(total).padStart(2, "0");
-      stageCount.textContent = `${n} / ${t}`;
+    const setOpen = (item, isOpen) => {
+      item.classList.toggle("is-open", isOpen);
+      const trigger = triggerFor(item);
+      const panel = panelFor(item);
+      if (trigger) trigger.setAttribute("aria-expanded", String(isOpen));
+      if (panel) panel.setAttribute("aria-hidden", String(!isOpen));
     };
 
-    const showService = (item, direction) => {
-      serviceItems.forEach((el) => el.classList.remove("is-active"));
-      item.classList.add("is-active");
-
-      const index = serviceItems.indexOf(item);
-      const { img, alt, desc } = item.dataset;
-      const name = item.textContent.trim();
-      activeIndex = index;
-
-      if (stageImg.getAttribute("src") === img) {
-        renderCount(index);
-        return;
-      }
-
-      if (pendingTimeout) window.clearTimeout(pendingTimeout);
-
-      if (prefersReducedMotion) {
-        stageImg.src = img;
-        stageImg.alt = alt || "";
-        stageName.textContent = name;
-        stageDesc.textContent = desc || "";
-        renderCount(index);
-        return;
-      }
-
-      stageImg.dataset.state = direction === "prev" ? "leaving-prev" : "leaving-next";
-      stageFoot.classList.add("is-updating");
-
-      pendingTimeout = window.setTimeout(() => {
-        stageImg.src = img;
-        stageImg.alt = alt || "";
-        stageName.textContent = name;
-        stageDesc.textContent = desc || "";
-        renderCount(index);
-
-        stageImg.dataset.state = direction === "prev" ? "entering-prev" : "entering-next";
-        void stageImg.offsetWidth;
-        requestAnimationFrame(() => {
-          stageImg.dataset.state = "";
-          stageFoot.classList.remove("is-updating");
-        });
-      }, 380);
+    const openItem = (item) => {
+      if (item.classList.contains("is-open")) return;
+      serviceItems.forEach((el) => {
+        if (el !== item) setOpen(el, false);
+      });
+      setOpen(item, true);
     };
 
-    const goTo = (rawIndex) => {
-      const nextIndex = ((rawIndex % total) + total) % total;
-      if (nextIndex === activeIndex) return;
-      const direction = nextIndex === (activeIndex + 1) % total ? "next" : "prev";
-      showService(serviceItems[nextIndex], direction);
-    };
-
-    serviceItems.forEach((item, index) => {
-      const enter = () => {
-        const direction = index >= activeIndex ? "next" : "prev";
-        showService(item, direction);
-      };
-      item.addEventListener("mouseenter", enter);
-      item.addEventListener("focus", enter);
-      item.addEventListener("click", enter);
+    serviceItems.forEach((item) => {
+      const trigger = triggerFor(item);
+      if (!trigger) return;
+      setOpen(item, item.classList.contains("is-open"));
+      trigger.addEventListener("click", () => openItem(item));
+      trigger.addEventListener("mouseenter", () => openItem(item));
+      trigger.addEventListener("focus", () => openItem(item));
     });
-
-    if (prevBtn) prevBtn.addEventListener("click", () => goTo(activeIndex - 1));
-    if (nextBtn) nextBtn.addEventListener("click", () => goTo(activeIndex + 1));
-
-    if (explorer && stageFrame) {
-      explorer.addEventListener("keydown", (event) => {
-        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
-        if (!stageFrame.contains(event.target)) return;
-        event.preventDefault();
-        goTo(activeIndex + (event.key === "ArrowRight" ? 1 : -1));
-      });
-
-      let touchStartX = null;
-      stageFrame.addEventListener(
-        "touchstart",
-        (event) => {
-          touchStartX = event.touches[0].clientX;
-        },
-        { passive: true }
-      );
-      stageFrame.addEventListener("touchend", (event) => {
-        if (touchStartX === null) return;
-        const delta = event.changedTouches[0].clientX - touchStartX;
-        if (Math.abs(delta) > 40) {
-          goTo(activeIndex + (delta < 0 ? 1 : -1));
-        }
-        touchStartX = null;
-      });
-    }
-
-    renderCount(activeIndex);
   }
 
   const form = document.getElementById("consult-form");
