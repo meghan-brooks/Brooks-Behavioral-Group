@@ -170,11 +170,25 @@
           status.classList.add("form-status--ok", "is-visible");
           form.reset();
         } else {
-          throw new Error("Form submission failed");
+          let detail = `HTTP ${response.status}`;
+          try {
+            const data = await response.json();
+            if (data && Array.isArray(data.errors) && data.errors.length) {
+              detail = data.errors
+                .map((e) => e.message || e.code)
+                .filter(Boolean)
+                .join("; ") || detail;
+            } else if (data && data.error) {
+              detail = data.error;
+            }
+          } catch (_) {
+            // Response wasn't JSON — keep the HTTP-status-based detail.
+          }
+          status.textContent = `Something went wrong sending this form (${detail}). Please call 336.310.9242 and Meghan will assist you directly.`;
+          status.classList.add("form-status--error", "is-visible");
         }
       } catch (error) {
-        status.textContent =
-          "Something went wrong sending this form. Please call 336.310.9242 and Meghan will assist you directly.";
+        status.textContent = `Something went wrong sending this form (${error.message || "network error"}). Please call 336.310.9242 and Meghan will assist you directly.`;
         status.classList.add("form-status--error", "is-visible");
       } finally {
         submitBtn.textContent = originalLabel;
