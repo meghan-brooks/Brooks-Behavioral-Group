@@ -744,6 +744,14 @@ textarea {
   color: var(--cream-text-dim);
 }
 
+/* Packages section (together.html) sits on an ivory background, not
+   the dark emerald the Services section above assumes -- match the
+   subheading to the tier eyebrows' gold instead of the washed-out
+   cream-on-light color. */
+#packages .services__head .lede {
+  color: var(--gold-600);
+}
+
 .service-groups {
   margin-top: clamp(3rem, 2.5rem + 2vw, 4.5rem);
   display: grid;
