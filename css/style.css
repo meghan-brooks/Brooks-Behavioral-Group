@@ -457,28 +457,36 @@ textarea {
 }
 
 @media (max-width: 640px) {
+  /* Photo and headline were competing for the same space, with the
+     text overlay landing directly on top of the subjects' faces no
+     matter how the scrim was tuned. Stack instead: a full-width photo
+     band on top, then the copy on a solid panel below -- the two
+     never overlap. */
   .hero {
-    padding-block: 3.25rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
   }
 
   .hero__bg {
-    object-position: 88% 15%;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    height: clamp(240px, 62vw, 320px);
+    object-fit: cover;
+    object-position: 68% 24%;
   }
 
   .hero__scrim {
-    background: linear-gradient(
-        180deg,
-        rgba(7, 26, 21, 0.93) 0%,
-        rgba(7, 26, 21, 0.8) 42%,
-        rgba(7, 26, 21, 0.45) 68%,
-        rgba(7, 26, 21, 0.22) 100%
-      ),
-      linear-gradient(
-        100deg,
-        rgba(7, 26, 21, 0.5) 0%,
-        rgba(7, 26, 21, 0.15) 45%,
-        rgba(7, 26, 21, 0) 70%
-      );
+    display: none;
+  }
+
+  .hero .wrap {
+    padding-block: 2.25rem 2.5rem;
+  }
+
+  .hero__frame {
+    max-width: none;
   }
 
   .hero__eyebrow {
