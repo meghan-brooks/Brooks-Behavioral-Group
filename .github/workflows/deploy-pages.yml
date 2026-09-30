@@ -26,9 +26,9 @@ jobs:
       - name: Assemble site
         run: |
           mkdir -p _site
-          cp index.html contact.html CNAME _site/
+          cp index.html contact.html together.html CNAME _site/
           cp -r css js assets _site/
-          sed -i "s/__ASSET_VERSION__/${GITHUB_SHA::7}/g" _site/index.html _site/contact.html
+          sed -i "s/__ASSET_VERSION__/${GITHUB_SHA::7}/g" _site/index.html _site/contact.html _site/together.html
 
       - uses: actions/configure-pages@v5
         with:

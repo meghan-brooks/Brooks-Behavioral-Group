@@ -1109,3 +1109,186 @@ textarea {
 .form-status--error {
   color: #8a3b2b;
 }
+
+/* ============================================================
+   Button variants (solid fills, for use on ivory backgrounds)
+   ============================================================ */
+
+.btn--block {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn--emerald {
+  background: var(--emerald-900);
+  border-color: var(--emerald-900);
+  color: var(--cream-text);
+}
+
+.btn--emerald:hover {
+  background: var(--emerald-800);
+  border-color: var(--gold-500);
+}
+
+.btn--gold-solid {
+  background: var(--gold-500);
+  border-color: var(--gold-500);
+  color: var(--ink-900);
+}
+
+.btn--gold-solid:hover {
+  background: var(--gold-600);
+  border-color: var(--gold-600);
+  color: var(--ivory-100);
+}
+
+/* ============================================================
+   Ways to Work Together (together.html)
+   ============================================================ */
+
+.tiers {
+  display: grid;
+  gap: clamp(2.5rem, 2rem + 2vw, 4rem);
+}
+
+.tier-card {
+  border: 1px solid rgba(201, 162, 78, 0.4);
+}
+
+.tier-card__media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.tier-card__media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tier-card__body {
+  padding: clamp(1.5rem, 1.25rem + 1vw, 2.5rem);
+}
+
+.tier-card__eyebrow {
+  color: var(--gold-600);
+}
+
+.tier-card__title {
+  margin-top: 0.6rem;
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+}
+
+.tier-card__desc {
+  margin-top: 0.85rem;
+  max-width: 40rem;
+  color: var(--ink-700);
+}
+
+.tier-card__note {
+  margin-top: 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--ink-900);
+}
+
+.tier-card .btn--block {
+  margin-top: 1.75rem;
+  max-width: 26rem;
+}
+
+/* ============================================================
+   Homepage "Ways to Work Together" preview
+   ============================================================ */
+
+.together-preview__head {
+  max-width: 42rem;
+}
+
+.together-preview__head .lede {
+  margin-top: 1.25rem;
+  color: var(--ink-700);
+}
+
+.together-preview__grid {
+  margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 1rem + 1.5vw, 2.5rem);
+}
+
+.teaser-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  border: 1px solid rgba(201, 162, 78, 0.4);
+  transition: border-color 0.25s var(--ease);
+}
+
+.teaser-card:hover,
+.teaser-card:focus-visible {
+  border-color: var(--gold-500);
+}
+
+.teaser-card:hover .teaser-card__img,
+.teaser-card:focus-visible .teaser-card__img {
+  transform: scale(1.04);
+}
+
+.teaser-card__media {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.teaser-card__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ease);
+}
+
+.teaser-card__body {
+  padding: clamp(1.25rem, 1rem + 0.75vw, 1.5rem);
+}
+
+.teaser-card__eyebrow {
+  color: var(--gold-600);
+}
+
+.teaser-card__title {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.teaser-card__desc {
+  margin-top: 0.5rem;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--ink-700);
+}
+
+.together-preview__cta {
+  margin-top: clamp(2rem, 1.5rem + 1.5vw, 3rem);
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .together-preview__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .together-preview__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .teaser-card__img {
+    transition: none !important;
+  }
+}
