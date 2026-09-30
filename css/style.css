@@ -1631,3 +1631,84 @@ textarea {
   color: var(--ink-700);
   font-style: normal;
 }
+
+/* ============================================================
+   The BBG Experience (index.html) — a condensed preview of the
+   four-step process, styled to sit on the homepage rather than
+   the full horizontal timeline used on together.html.
+   ============================================================ */
+
+.experience__intro {
+  max-width: 40rem;
+  padding-bottom: clamp(2rem, 1.6rem + 1.5vw, 2.75rem);
+  border-bottom: 1px solid rgba(201, 162, 78, 0.4);
+}
+
+.experience__headline {
+  margin-top: 0.75rem;
+  font-size: var(--step-h2);
+  color: var(--cream-text);
+}
+
+.experience-list {
+  margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  list-style: none;
+}
+
+.experience-item {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  gap: 0 1.5rem;
+  padding-block: clamp(1.5rem, 1.25rem + 1vw, 2rem);
+  border-bottom: 1px solid rgba(239, 233, 219, 0.12);
+}
+
+.experience-item:first-child {
+  padding-top: 0;
+}
+
+.experience-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.experience-item__icon {
+  display: flex;
+  align-items: flex-start;
+  padding-top: 0.2rem;
+  color: var(--gold-500);
+}
+
+.experience-item__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.experience-item__title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1.05rem;
+  letter-spacing: 0.01em;
+  color: var(--cream-text);
+}
+
+.experience-item__desc {
+  margin-top: 0.5rem;
+  color: var(--cream-text-dim);
+  max-width: 34rem;
+}
+
+.experience__cta {
+  margin-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);
+}
+
+@media (max-width: 560px) {
+  .experience-item {
+    grid-template-columns: 2.25rem 1fr;
+  }
+
+  .experience-item__icon svg {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+}
