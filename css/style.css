@@ -1854,3 +1854,27 @@ textarea {
     display: none;
   }
 }
+
+/* ============================================================
+   Scroll reveal — a subtle fade/rise as an element enters the
+   viewport, triggered once via IntersectionObserver in main.js.
+   ============================================================ */
+
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
