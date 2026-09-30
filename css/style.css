@@ -1783,3 +1783,74 @@ textarea {
     grid-template-columns: 1fr;
   }
 }
+
+/* ============================================================
+   Services hero band (services.html) — the page intro and the
+   lifestyle photo combined into one banner, with the photo
+   fading into the text panel instead of sitting in a separate,
+   hard-edged section below it.
+   ============================================================ */
+
+.services-hero {
+  display: grid;
+  grid-template-columns: minmax(20rem, 38%) 1fr;
+  min-height: clamp(320px, 32vw, 420px);
+  background: var(--ivory-100);
+}
+
+.services-hero__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2.5rem, 2rem + 2vw, 4rem) clamp(1.5rem, 1rem + 3vw, 4rem);
+}
+
+.services-hero__title {
+  margin-top: 0.75rem;
+  font-size: clamp(2.25rem, 1.8rem + 2vw, 3rem);
+  line-height: 1.08;
+}
+
+.services-hero__lede {
+  margin-top: 1.25rem;
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: var(--step-lead);
+  line-height: 1.6;
+  color: var(--ink-700);
+  max-width: 26rem;
+}
+
+.services-hero__media {
+  position: relative;
+  overflow: hidden;
+}
+
+.services-hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.services-hero__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 18%;
+  background: linear-gradient(90deg, var(--ivory-100) 0%, rgba(247, 242, 230, 0) 100%);
+}
+
+@media (max-width: 860px) {
+  .services-hero {
+    grid-template-columns: 1fr;
+  }
+
+  .services-hero__media {
+    height: 260px;
+  }
+
+  .services-hero__media::before {
+    display: none;
+  }
+}
