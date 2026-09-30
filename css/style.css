@@ -907,6 +907,17 @@ textarea {
   }
 }
 
+/* Additional guidance box (together.html) sits on the ivory packages
+   section, not the dark emerald the homepage's "Why private pay" box
+   assumes -- match the rest of that section's ivory-safe colors. */
+#packages .pay-note__title {
+  color: var(--gold-600);
+}
+
+#packages .pay-note p {
+  color: var(--ink-700);
+}
+
 /* ============================================================
    Closing CTA band (index.html)
    ============================================================ */
