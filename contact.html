@@ -37,6 +37,9 @@
       </button>
 
       <nav class="site-nav" id="primary-nav">
+        <a class="site-nav__pathway" href="index.html#approach">For Families</a>
+        <a class="site-nav__pathway" href="organizations.html">For Organizations</a>
+        <span class="site-nav__divider" aria-hidden="true"></span>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
         <a href="together.html">Work Together</a>
@@ -58,7 +61,8 @@
 
     <section class="section section--ivory" style="padding-top: clamp(2.5rem, 2rem + 2vw, 3.5rem);">
       <div class="wrap contact__grid">
-        <form id="consult-form" class="contact-form" action="https://formspree.io/f/mljdpvrq" method="POST">
+        <form id="consult-form" class="contact-form ajax-form" action="https://formspree.io/f/mljdpvrq" method="POST">
+          <input type="hidden" name="_subject" value="New Family Consultation Request" />
           <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
 
           <div class="form-row">
@@ -133,6 +137,8 @@
         </a>
 
         <nav class="site-footer__nav" aria-label="Footer">
+          <a href="index.html#approach">For Families</a>
+          <a href="organizations.html">For Organizations</a>
           <a href="about.html">About</a>
           <a href="services.html">Services</a>
           <a href="together.html">Work Together</a>

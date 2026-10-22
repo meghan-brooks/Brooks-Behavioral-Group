@@ -333,7 +333,7 @@ textarea {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: clamp(1.25rem, 1rem + 1vw, 2.25rem);
+  gap: clamp(1rem, 0.75rem + 1vw, 2.25rem);
 }
 
 .site-nav a {
@@ -369,6 +369,30 @@ textarea {
   color: var(--gold-600) !important;
 }
 
+.site-nav__pathway {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid var(--gold-600);
+  font-weight: 600 !important;
+  color: var(--gold-600) !important;
+  white-space: nowrap;
+}
+
+.site-nav__pathway::after {
+  display: none;
+}
+
+.site-nav__pathway:hover,
+.site-nav__pathway[aria-current="page"] {
+  background: var(--gold-600);
+  color: var(--ivory-50) !important;
+}
+
+.site-nav__divider {
+  width: 1px;
+  height: 1.1rem;
+  background: rgba(201, 162, 78, 0.4);
+}
+
 .nav-toggle {
   display: none;
   flex-direction: column;
@@ -382,7 +406,11 @@ textarea {
   background: var(--ink-900);
 }
 
-@media (max-width: 780px) {
+@media (max-width: 1040px) {
+  .site-nav__divider {
+    display: none;
+  }
+
   .nav-toggle {
     display: flex;
   }
@@ -552,6 +580,11 @@ textarea {
   padding-bottom: 2px;
 }
 
+.hero__actions + .hero__call {
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+
 @keyframes rise-in {
   from {
     opacity: 0;
@@ -648,6 +681,15 @@ textarea {
   flex-direction: column;
   gap: 1.1rem;
   color: var(--ink-700);
+}
+
+.about__cross-link {
+  margin-top: 1.5rem;
+}
+
+.about__cross-link .btn--text {
+  color: var(--gold-600);
+  font-weight: 600;
 }
 
 .fact-list {
@@ -1430,6 +1472,31 @@ textarea {
   line-height: 1.55;
   color: var(--ink-700);
   opacity: 0.85;
+}
+
+/* ============================================================
+   Consulting for Organizations (organizations.html) — a compact
+   3-up grid of service tiers, distinct from the family page's
+   single-column, photo-led tier cards.
+   ============================================================ */
+
+.consulting-tiers {
+  margin-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.75rem, 1.25rem + 1.5vw, 2.5rem);
+  align-items: stretch;
+}
+
+.consulting-tiers .tier-card {
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 900px) {
+  .consulting-tiers {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* ============================================================

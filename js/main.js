@@ -81,10 +81,12 @@
     });
   }
 
-  const form = document.getElementById("consult-form");
-  const status = document.getElementById("form-status");
+  const ajaxForms = Array.from(document.querySelectorAll(".ajax-form"));
 
-  if (form && status) {
+  ajaxForms.forEach((form) => {
+    const status = form.querySelector(".form-status");
+    if (!status) return;
+
     form.addEventListener("submit", async (event) => {
       event.preventDefault();
       status.classList.remove("form-status--ok", "form-status--error");
@@ -132,5 +134,5 @@
         submitBtn.disabled = false;
       }
     });
-  }
+  });
 })();
