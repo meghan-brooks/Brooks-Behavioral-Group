@@ -26,6 +26,26 @@
     }
   }
 
+  const revealTriggers = Array.from(document.querySelectorAll("[data-reveal]"));
+
+  if (revealTriggers.length) {
+    revealTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", (event) => {
+        const target = document.getElementById(trigger.dataset.reveal);
+        if (!target) return; // Target lives on another page -- let the link navigate there.
+        event.preventDefault();
+        target.hidden = false;
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    const hashTarget = document.getElementById(window.location.hash.slice(1));
+    if (hashTarget && hashTarget.hidden) {
+      hashTarget.hidden = false;
+      hashTarget.scrollIntoView({ block: "start" });
+    }
+  }
+
   const toggle = document.querySelector(".nav-toggle");
   const nav = document.getElementById("primary-nav");
 
